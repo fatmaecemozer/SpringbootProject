@@ -3,10 +3,11 @@ kind: Ingress
 metadata:
   name: springboot-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: addon-http-application-routing
 spec:
   rules:
-    - http:
+    - host: springboot-app.46b03f8587a34431b38b.northeurope.aksapp.io
+      http:
         paths:
           - path: /hello
             pathType: Prefix
