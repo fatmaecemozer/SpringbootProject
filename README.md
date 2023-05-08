@@ -1,6 +1,6 @@
 # SpringbootProject
 
-![AssessmentTopo logy.png](..%2FAssessmentTopology.png)
+![img.png](pngs/topology.png)
 
 In order to achieve the topology shown above;
 
