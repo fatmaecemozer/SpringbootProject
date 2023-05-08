@@ -34,7 +34,7 @@ Jenkins IP and Default Pasword;
 http://localhost:8080
 
 `cat /var/lib/jenkins/secrets/initialAdminPassword`
-![img.png](img.png)
+![img.png](pngs/img.png)
 
 
 Docker Installation completed with the following commands;
@@ -79,19 +79,19 @@ Kubectl Installation completed with the following commands;
 Jenkins server must be able to execute docker and kubectl commands.
 
 Docker and Kubectl plugins installed from Jenkins UI Manage Plugins section;
-![img_1.png](img_1.png)
-![img_2.png](img_2.png)
+![img_1.png](pngs/img_1.png)
+![img_2.png](pngs/img_2.png)
 
 #### Azure Kubernetes Cluster  
-![img_3.png](img_3.png)
+![img_3.png](pngs/img_3.png)
 
 #### Azure Container Registry
-![img_4.png](img_4.png)
+![img_4.png](pngs/img_4.png)
 ACR attached to kubernetes cluster using;
 `az aks update -n KubeCluster -g DevOps --attach-acr AssesmentRegistry`
 
 #### HTTP application routing add-on AKS
-![img_5.png](img_5.png)
+![img_5.png](pngs/img_5.png)
 `az aks show -g DevOps -n KubeCluster \
 --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table`
 
@@ -100,4 +100,4 @@ _46b03f8587a34431b38b.northeurope.aksapp.io_
 `az aks get-credentials --resource-group DevOps --name KubeCluster`
 
 
-![img_6.png](img_6.png)
+![img_6.png](pngs/img_6.png)
