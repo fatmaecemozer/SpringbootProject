@@ -1,0 +1,54 @@
+pipeline {
+    agent any
+    environment{
+        registryName= "assesmentregistry"
+        registryCredential= 'ACR'
+        registryUrl= 'assesmentregistry.azurecr.io'
+        dockerImage= ""
+    }
+
+    stages {
+        stage('checkout') {
+            steps {
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/fatmaecemozer/SpringbootProject']])
+            }
+        }
+        stage('build image') {
+            steps {
+                script {
+                    dockerImage = docker.build registryName
+                }
+            }
+        }
+        stage('push image') {
+            steps {
+                script {
+                    docker.withRegistry( "http://${registryUrl}", registryCredential){
+                    dockerImage.push()
+                    }
+                }
+            }
+        }
+        stage('deploy to kubernetes - deployment') {
+            steps {
+                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'K8S', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                    sh "kubectl apply -f springboot-deployment.yaml"
+                }
+            }
+        }
+        stage('deploy to kubernetes - service') {
+            steps {
+                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'K8S', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                    sh "kubectl apply -f springboot-service.yaml"
+                }
+            }
+        }
+        stage('deploy to kubernetes - ingress') {
+            steps {
+                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'K8S', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                    sh "kubectl apply -f springboot-ingress.yaml"
+                }
+            }
+        }
+    }
+}

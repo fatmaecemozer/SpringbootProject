@@ -101,3 +101,6 @@ _46b03f8587a34431b38b.northeurope.aksapp.io_
 
 
 ![img_6.png](pngs/img_6.png)
+
+#### CI/CD 
+![img.png](pngs/cicd.png)
