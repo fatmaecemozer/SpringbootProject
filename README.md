@@ -1,6 +1,6 @@
 # SpringbootProject
 
-![img.png](pngs/topology.png)
+![img.png](pngs/topoloji.png)
 
 In order to achieve the topology shown above;
 
