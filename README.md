@@ -6,7 +6,7 @@ In order to achieve the topology shown above;
 
 * A SpringBoot project base created using spring initializer, developed on IntelliJ Idea using jdk:17, Maven and packaged as a Jar file. 
 * A public Github repository created for the assessment and project components pushed here using basic git commands.
-* An Ubuntu 18.04 (Bionic) server used as a Jenkins Server and a Build Server simultaneously in the local environment. 
+* An Ubuntu 18.04 (Bionic) server used as a Jenkins Server and a Build Server simultaneously in the local environment. Dockerfile used to create Docker Image within Jenkins CI/CD pipeline.
 * Azure Container Registry used to push and store docker images.
 * Azure Kubernetes Services used to create Kubernetes Cluster. 
 * 'HTTP application routing add-on' used for Azure Kubernetes Service which deploys two components: a Kubernetes ingress controller and an External-DNS controller.
@@ -87,6 +87,7 @@ Docker and Kubectl plugins installed from Jenkins UI Manage Plugins section;
 
 #### Azure Container Registry
 ![img_4.png](pngs/img_4.png)
+Application docker image pushed here to be used in the deployment. ACR connection with Kubernetes managed.
 ACR attached to kubernetes cluster using;
 `az aks update -n KubeCluster -g DevOps --attach-acr AssesmentRegistry`
 
@@ -103,6 +104,8 @@ _46b03f8587a34431b38b.northeurope.aksapp.io_
 ![img_6.png](pngs/img_6.png)
 
 #### CI/CD 
+
+Jenkins used to be able to complete springboot application CI/CD automation pipeline.
 ![img.png](pngs/cicd.png)
 
-![img.png](pngs/success.png)
+![img.png](pngs/project.png) 
